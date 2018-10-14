@@ -1,0 +1,2152 @@
+/-----------------------------------------
+| State-action rewards from Q-Learning
+\-----------------------------------------
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.42
+ -- left : 0.67
+ -- right : 0.52
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'right'))
+ -- forward : 0.62
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', None))
+ -- forward : -0.51
+ -- left : -15.65
+ -- right : 0.13
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', None))
+ -- forward : 0.30
+ -- left : -8.71
+ -- right : 0.00
+ -- None : -3.09
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.21
+ -- None : 0.05
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'right'))
+ -- forward : 1.81
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -1.40
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'right'))
+ -- forward : -2.02
+ -- left : 0.00
+ -- right : -0.97
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.07
+ -- right : 1.06
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'left'))
+ -- forward : -9.32
+ -- left : 0.00
+ -- right : 1.05
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', None))
+ -- forward : 0.25
+ -- left : 2.50
+ -- right : 1.05
+ -- None : -5.43
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.25
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', None))
+ -- forward : 1.26
+ -- left : 0.21
+ -- right : 0.65
+ -- None : -4.98
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'right'))
+ -- forward : -7.04
+ -- left : -6.54
+ -- right : 0.30
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'right'))
+ -- forward : -0.52
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.06
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.10
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'forward'))
+ -- forward : -0.00
+ -- left : -1.01
+ -- right : 1.10
+ -- None : -0.73
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', None))
+ -- forward : -8.64
+ -- left : -9.84
+ -- right : 1.65
+ -- None : 0.45
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'left'))
+ -- forward : 0.19
+ -- left : -6.21
+ -- right : 0.00
+ -- None : -3.09
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : -10.57
+ -- right : 0.00
+ -- None : 0.18
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'left'))
+ -- forward : 1.15
+ -- left : 0.71
+ -- right : 0.00
+ -- None : -4.37
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', None))
+ -- forward : -9.87
+ -- left : -9.99
+ -- right : 0.95
+ -- None : 1.12
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -1.15
+ -- right : 0.00
+ -- None : 0.54
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', None))
+ -- forward : 0.64
+ -- left : 0.00
+ -- right : 0.35
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 1.49
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -1.52
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', None))
+ -- forward : -0.25
+ -- left : -14.12
+ -- right : 0.44
+ -- None : -3.16
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'left'))
+ -- forward : -8.00
+ -- left : -36.20
+ -- right : -17.12
+ -- None : 2.17
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : -0.01
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -1.96
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'forward'))
+ -- forward : 0.99
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -7.21
+ -- right : 0.01
+ -- None : 1.68
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -5.79
+ -- right : -8.53
+ -- None : 1.22
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', None))
+ -- forward : 0.73
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.11
+ -- right : 0.28
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'left'))
+ -- forward : -1.99
+ -- left : -12.09
+ -- right : -1.05
+ -- None : 0.33
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', None))
+ -- forward : -5.99
+ -- left : -4.37
+ -- right : 0.36
+ -- None : 2.09
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.61
+ -- left : 0.00
+ -- right : -0.39
+ -- None : -0.84
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', None))
+ -- forward : -9.53
+ -- left : -4.36
+ -- right : 0.92
+ -- None : 1.91
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'forward'))
+ -- forward : -0.11
+ -- left : 0.03
+ -- right : 0.78
+ -- None : -3.41
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -1.98
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'right'))
+ -- forward : -2.35
+ -- left : -2.03
+ -- right : -1.95
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.23
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.30
+ -- None : -0.49
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'left'))
+ -- forward : -7.32
+ -- left : -1.46
+ -- right : 1.29
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -16.69
+ -- right : 0.66
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 1.13
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.13
+ -- None : -0.05
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'right'))
+ -- forward : -7.55
+ -- left : 0.00
+ -- right : 0.19
+ -- None : 1.30
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', None))
+ -- forward : 0.35
+ -- left : -0.95
+ -- right : -0.03
+ -- None : -0.26
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'right'))
+ -- forward : -1.06
+ -- left : 0.00
+ -- right : 2.08
+ -- None : -0.18
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -0.51
+ -- right : 0.35
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -0.99
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', None))
+ -- forward : -9.26
+ -- left : -5.67
+ -- right : -0.06
+ -- None : 2.47
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.71
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 1.14
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', None))
+ -- forward : -2.82
+ -- left : -12.36
+ -- right : 0.06
+ -- None : 1.73
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -0.95
+ -- right : 0.08
+ -- None : -0.27
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.31
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.14
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.20
+ -- None : 0.08
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.45
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', None))
+ -- forward : -5.34
+ -- left : -2.55
+ -- right : 0.70
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'right'))
+ -- forward : -1.46
+ -- left : -4.89
+ -- right : 0.51
+ -- None : 1.42
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.29
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -1.27
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', None))
+ -- forward : 0.50
+ -- left : 0.75
+ -- right : 1.16
+ -- None : -5.11
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : -6.93
+ -- None : 0.23
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'left'))
+ -- forward : -0.54
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.01
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'forward'))
+ -- forward : -2.00
+ -- left : -1.97
+ -- right : -0.33
+ -- None : 1.88
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.05
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 1.45
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', None))
+ -- forward : -39.00
+ -- left : -31.40
+ -- right : -12.74
+ -- None : 0.56
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', None))
+ -- forward : -3.26
+ -- left : -3.99
+ -- right : 1.14
+ -- None : 1.84
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -1.04
+ -- right : 0.09
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : -1.02
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -1.95
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.05
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', None))
+ -- forward : 0.81
+ -- left : -7.26
+ -- right : 0.03
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'forward'))
+ -- forward : -28.83
+ -- left : 0.00
+ -- right : 0.08
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.01
+ -- right : 0.40
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'forward'))
+ -- forward : -19.07
+ -- left : -10.61
+ -- right : 0.00
+ -- None : 1.60
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 2.06
+ -- left : 0.50
+ -- right : 0.25
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'forward'))
+ -- forward : -6.20
+ -- left : 0.00
+ -- right : 0.17
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', None))
+ -- forward : 0.12
+ -- left : -18.08
+ -- right : 0.00
+ -- None : -3.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'left'))
+ -- forward : -4.71
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 1.15
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'left'))
+ -- forward : -9.34
+ -- left : -9.61
+ -- right : 1.74
+ -- None : 0.07
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.13
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', None))
+ -- forward : 1.02
+ -- left : -11.51
+ -- right : 1.70
+ -- None : -5.33
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', None))
+ -- forward : 0.53
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -2.54
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.01
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'left'))
+ -- forward : -0.51
+ -- left : -8.69
+ -- right : 1.81
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'left'))
+ -- forward : -3.50
+ -- left : -2.17
+ -- right : 0.50
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', None))
+ -- forward : 0.06
+ -- left : -11.52
+ -- right : 1.14
+ -- None : -5.05
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.12
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.11
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.91
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'left'))
+ -- forward : -2.16
+ -- left : -9.52
+ -- right : 0.88
+ -- None : 1.58
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'forward'))
+ -- forward : 0.67
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -11.31
+ -- right : 1.05
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.08
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'left'))
+ -- forward : 0.07
+ -- left : 0.12
+ -- right : 0.69
+ -- None : -3.14
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'left'))
+ -- forward : -1.90
+ -- left : -1.62
+ -- right : 0.00
+ -- None : 0.32
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'right'))
+ -- forward : -20.43
+ -- left : -31.63
+ -- right : -0.96
+ -- None : 0.17
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.79
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', None))
+ -- forward : 0.82
+ -- left : 0.86
+ -- right : 1.78
+ -- None : -5.52
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', None))
+ -- forward : -0.55
+ -- left : 0.00
+ -- right : 0.89
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.16
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'right'))
+ -- forward : -7.97
+ -- left : -8.55
+ -- right : -0.14
+ -- None : 2.02
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', None))
+ -- forward : 1.17
+ -- left : 0.45
+ -- right : 0.44
+ -- None : -1.64
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', None))
+ -- forward : 0.13
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'left'))
+ -- forward : -10.23
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 1.40
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', None))
+ -- forward : -22.77
+ -- left : -4.41
+ -- right : -6.01
+ -- None : 0.06
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'left'))
+ -- forward : 0.98
+ -- left : 1.53
+ -- right : 0.55
+ -- None : -4.75
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'forward'))
+ -- forward : -2.98
+ -- left : -6.48
+ -- right : 0.34
+ -- None : 0.06
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.33
+ -- None : -0.26
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', None))
+ -- forward : -9.69
+ -- left : -10.14
+ -- right : 1.03
+ -- None : 1.61
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.16
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : -3.57
+ -- None : 0.70
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.79
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'right'))
+ -- forward : -0.49
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.34
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.04
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : -2.01
+ -- left : 0.00
+ -- right : -1.77
+ -- None : 0.67
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', None))
+ -- forward : 0.23
+ -- left : -0.15
+ -- right : 0.69
+ -- None : -0.57
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.09
+ -- right : 0.73
+ -- None : -2.47
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'forward'))
+ -- forward : -2.03
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.13
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.15
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.45
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'right'))
+ -- forward : -1.97
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.09
+ -- left : 0.00
+ -- right : 0.43
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', None))
+ -- forward : -2.03
+ -- left : 0.00
+ -- right : -14.57
+ -- None : 0.78
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'left'))
+ -- forward : -1.44
+ -- left : -0.51
+ -- right : -0.01
+ -- None : 0.32
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'right'))
+ -- forward : -0.47
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.77
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : -0.01
+ -- None : 2.01
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.83
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.45
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.17
+ -- None : -0.06
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.05
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'left'))
+ -- forward : -9.84
+ -- left : -16.54
+ -- right : -3.57
+ -- None : 1.29
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -4.40
+ -- right : 0.11
+ -- None : -0.78
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -3.70
+ -- right : 0.00
+ -- None : 0.27
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.12
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : -0.55
+ -- right : 2.28
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'right'))
+ -- forward : 0.75
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', None))
+ -- forward : 0.08
+ -- left : 2.69
+ -- right : 0.28
+ -- None : -3.27
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', None))
+ -- forward : 1.75
+ -- left : -0.25
+ -- right : 0.35
+ -- None : -2.09
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'left'))
+ -- forward : -31.25
+ -- left : 0.00
+ -- right : -1.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'left'))
+ -- forward : -7.83
+ -- left : 0.00
+ -- right : 0.04
+ -- None : 1.35
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'forward'))
+ -- forward : -9.94
+ -- left : -13.62
+ -- right : 0.63
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', None))
+ -- forward : 1.76
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.13
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.29
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.85
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', None))
+ -- forward : -4.46
+ -- left : -8.95
+ -- right : 0.38
+ -- None : 2.51
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'forward'))
+ -- forward : 0.42
+ -- left : 1.82
+ -- right : 0.49
+ -- None : -4.71
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.31
+ -- right : -0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -0.03
+ -- right : 0.06
+ -- None : -2.29
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', None))
+ -- forward : 0.00
+ -- left : 1.28
+ -- right : 0.00
+ -- None : -3.66
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'right'))
+ -- forward : -0.54
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.83
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : -1.03
+ -- None : 0.62
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.50
+ -- left : -2.72
+ -- right : 0.12
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.31
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -8.19
+ -- right : 0.09
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -1.05
+ -- right : 0.06
+ -- None : -0.22
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 1.19
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', None))
+ -- forward : -9.99
+ -- left : -9.98
+ -- right : 0.80
+ -- None : 1.85
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'right'))
+ -- forward : 1.46
+ -- left : 0.32
+ -- right : -0.04
+ -- None : -0.83
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'forward'))
+ -- forward : 1.59
+ -- left : 0.48
+ -- right : 0.00
+ -- None : -0.24
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', None))
+ -- forward : 0.79
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.22
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'forward'))
+ -- forward : 1.69
+ -- left : 0.36
+ -- right : 0.09
+ -- None : -4.39
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.27
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'right'))
+ -- forward : 0.10
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'right'))
+ -- forward : -0.74
+ -- left : 0.00
+ -- right : 0.14
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', None))
+ -- forward : -1.05
+ -- left : -37.87
+ -- right : 0.38
+ -- None : 1.66
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', None))
+ -- forward : 0.48
+ -- left : 0.01
+ -- right : 0.12
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -1.99
+ -- right : 0.09
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.05
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'left'))
+ -- forward : -0.04
+ -- left : -2.87
+ -- right : 1.24
+ -- None : -3.07
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', None))
+ -- forward : 0.17
+ -- left : 0.07
+ -- right : 0.29
+ -- None : -5.31
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.11
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'forward'))
+ -- forward : -2.02
+ -- left : -9.03
+ -- right : 0.00
+ -- None : 1.38
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -0.01
+ -- right : 1.59
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', None))
+ -- forward : -3.89
+ -- left : -32.96
+ -- right : -2.08
+ -- None : 1.42
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.57
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.49
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 2.09
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', None))
+ -- forward : 0.62
+ -- left : -0.13
+ -- right : 1.35
+ -- None : -4.89
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -1.00
+ -- right : 0.00
+ -- None : -1.44
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.51
+ -- None : -0.44
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -2.01
+ -- right : -0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'forward'))
+ -- forward : 0.08
+ -- left : 0.60
+ -- right : 0.00
+ -- None : -1.27
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'right'))
+ -- forward : -7.97
+ -- left : 0.00
+ -- right : 0.29
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'right'))
+ -- forward : 0.67
+ -- left : 0.25
+ -- right : 1.64
+ -- None : -0.29
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.10
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.28
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.52
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.31
+ -- left : -1.03
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'forward'))
+ -- forward : 0.56
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', None))
+ -- forward : -3.09
+ -- left : -3.83
+ -- right : 0.62
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.64
+ -- left : 1.54
+ -- right : 2.49
+ -- None : -4.80
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'right'))
+ -- forward : -0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', None))
+ -- forward : -10.46
+ -- left : -8.35
+ -- right : 0.63
+ -- None : 1.78
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -5.14
+ -- right : 0.02
+ -- None : 1.10
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', None))
+ -- forward : -9.94
+ -- left : -9.74
+ -- right : 1.70
+ -- None : 0.43
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'forward'))
+ -- forward : -4.79
+ -- left : -6.38
+ -- right : 0.35
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', None))
+ -- forward : 0.00
+ -- left : -1.04
+ -- right : 0.22
+ -- None : -3.42
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 1.32
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'forward'))
+ -- forward : -1.98
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.17
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'left'))
+ -- forward : -0.48
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.04
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', None))
+ -- forward : -5.97
+ -- left : 0.00
+ -- right : 1.52
+ -- None : -0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', None))
+ -- forward : 0.68
+ -- left : -3.60
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.01
+ -- left : 1.01
+ -- right : -0.24
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.12
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'forward'))
+ -- forward : -8.81
+ -- left : -34.39
+ -- right : 1.75
+ -- None : 0.08
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'left'))
+ -- forward : -7.51
+ -- left : -2.90
+ -- right : -1.49
+ -- None : 0.15
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.06
+ -- right : 0.16
+ -- None : -1.90
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', None))
+ -- forward : -29.94
+ -- left : -37.60
+ -- right : -18.09
+ -- None : 0.68
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', None))
+ -- forward : 0.04
+ -- left : 0.13
+ -- right : 1.29
+ -- None : -3.29
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -9.35
+ -- right : 1.66
+ -- None : 0.26
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -6.25
+ -- right : 0.01
+ -- None : 0.37
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 1.67
+ -- right : 0.74
+ -- None : -3.54
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'left'))
+ -- forward : -0.48
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.22
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.40
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', None))
+ -- forward : 1.53
+ -- left : 1.91
+ -- right : 0.48
+ -- None : -4.53
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', None))
+ -- forward : -0.52
+ -- left : -0.48
+ -- right : 0.00
+ -- None : 1.95
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.12
+ -- right : 0.00
+ -- None : -3.86
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', None))
+ -- forward : -9.17
+ -- left : -8.92
+ -- right : 1.91
+ -- None : 0.42
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.74
+ -- left : 1.49
+ -- right : 0.31
+ -- None : -2.30
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.10
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.24
+ -- left : -1.03
+ -- right : 0.00
+ -- None : -0.26
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -2.03
+ -- right : 0.06
+ -- None : 0.39
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'forward'))
+ -- forward : -0.05
+ -- left : 1.39
+ -- right : 0.00
+ -- None : -5.02
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.46
+ -- left : 0.00
+ -- right : 2.39
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -7.40
+ -- right : 0.63
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', None))
+ -- forward : 1.64
+ -- left : -13.82
+ -- right : 0.02
+ -- None : -3.64
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'forward'))
+ -- forward : -5.78
+ -- left : -31.19
+ -- right : 0.03
+ -- None : 1.84
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'left'))
+ -- forward : -4.99
+ -- left : -9.79
+ -- right : 0.71
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -0.48
+ -- right : 0.08
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', None))
+ -- forward : 1.64
+ -- left : 0.00
+ -- right : 0.12
+ -- None : -3.41
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -25.00
+ -- right : 0.00
+ -- None : 0.20
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'left'))
+ -- forward : 2.12
+ -- left : 0.88
+ -- right : 0.18
+ -- None : -4.84
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', None))
+ -- forward : -10.21
+ -- left : -9.85
+ -- right : 1.07
+ -- None : 2.21
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', None))
+ -- forward : 0.21
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.90
+ -- left : 0.05
+ -- right : 0.00
+ -- None : -4.85
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'left'))
+ -- forward : 1.27
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -4.84
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', None))
+ -- forward : 0.15
+ -- left : 0.62
+ -- right : -0.05
+ -- None : -4.43
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -15.06
+ -- right : 0.26
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.63
+ -- None : -4.54
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.21
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : -19.50
+ -- left : -2.04
+ -- right : -1.02
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', None))
+ -- forward : 1.99
+ -- left : 0.91
+ -- right : 1.37
+ -- None : -0.99
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 1.81
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'forward'))
+ -- forward : -24.68
+ -- left : -3.89
+ -- right : 0.18
+ -- None : 1.24
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', None))
+ -- forward : -0.03
+ -- left : 0.04
+ -- right : 0.35
+ -- None : -0.52
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'left'))
+ -- forward : -1.93
+ -- left : 0.00
+ -- right : 1.21
+ -- None : 0.08
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.07
+ -- left : -1.62
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 1.13
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'left'))
+ -- forward : -13.33
+ -- left : -28.47
+ -- right : -6.97
+ -- None : 0.34
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.11
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', None))
+ -- forward : 0.00
+ -- left : -3.07
+ -- right : 0.36
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.24
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -7.61
+ -- right : 0.00
+ -- None : 0.27
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.19
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -31.34
+ -- right : -5.51
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'left'))
+ -- forward : 1.69
+ -- left : 0.09
+ -- right : 0.12
+ -- None : -2.74
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', None))
+ -- forward : -10.43
+ -- left : 0.00
+ -- right : 0.40
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.75
+ -- left : 0.07
+ -- right : 0.12
+ -- None : -4.48
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', None))
+ -- forward : -11.03
+ -- left : -32.54
+ -- right : -16.44
+ -- None : 1.72
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.36
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', None))
+ -- forward : -1.17
+ -- left : -8.30
+ -- right : 0.76
+ -- None : 0.22
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.18
+ -- None : -0.29
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'forward'))
+ -- forward : -38.37
+ -- left : -14.77
+ -- right : 0.00
+ -- None : 0.33
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -1.01
+ -- right : 0.00
+ -- None : -0.23
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'left'))
+ -- forward : 0.00
+ -- left : -5.14
+ -- right : 0.61
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -1.06
+ -- right : -0.35
+ -- None : 1.93
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'forward'))
+ -- forward : -8.00
+ -- left : -33.52
+ -- right : 0.13
+ -- None : 1.04
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'left'))
+ -- forward : 1.58
+ -- left : 0.39
+ -- right : -0.01
+ -- None : -0.22
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 1.79
+ -- None : 0.17
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'left'), ('right', 'forward'))
+ -- forward : -0.00
+ -- left : -4.34
+ -- right : 0.00
+ -- None : -2.30
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.22
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', None))
+ -- forward : -7.53
+ -- left : -3.79
+ -- right : 0.00
+ -- None : 1.84
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', None))
+ -- forward : -6.91
+ -- left : -0.51
+ -- right : 1.38
+ -- None : 0.22
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 1.10
+ -- None : -4.09
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : -2.03
+ -- left : 0.00
+ -- right : -1.02
+ -- None : 0.13
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', None))
+ -- forward : 1.99
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.22
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', None))
+ -- forward : -3.81
+ -- left : -39.98
+ -- right : 1.62
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 1.79
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -34.23
+ -- right : 0.27
+ -- None : 0.06
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : -7.79
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.25
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'forward'))
+ -- forward : -23.69
+ -- left : -29.34
+ -- right : 0.11
+ -- None : 0.84
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -21.64
+ -- right : -3.62
+ -- None : 1.73
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.05
+ -- None : 1.55
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'right'), ('left', 'right'), ('right', None))
+ -- forward : -0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -0.53
+ -- right : 0.09
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'right'))
+ -- forward : -4.35
+ -- left : 0.00
+ -- right : 0.23
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', None))
+ -- forward : -3.16
+ -- left : -1.86
+ -- right : 0.00
+ -- None : 2.27
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.60
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.19
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'left'))
+ -- forward : -0.04
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.20
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.08
+ -- left : 1.02
+ -- right : -0.06
+ -- None : -4.24
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 1.19
+ -- right : 0.00
+ -- None : -0.54
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'right'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.38
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', None))
+ -- forward : -3.08
+ -- left : -1.22
+ -- right : 0.19
+ -- None : 0.85
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.14
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'left'), ('right', None))
+ -- forward : 0.41
+ -- left : 0.89
+ -- right : 1.13
+ -- None : -3.67
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'left'))
+ -- forward : -2.54
+ -- left : -9.01
+ -- right : 0.65
+ -- None : 1.31
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'left'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.18
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'right'))
+ -- forward : -0.55
+ -- left : -0.97
+ -- right : 0.01
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.52
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', None))
+ -- forward : 0.00
+ -- left : -1.08
+ -- right : 0.00
+ -- None : 0.98
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -2.19
+ -- right : 0.41
+ -- None : -3.28
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.20
+ -- None : -2.40
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', None), ('right', 'left'))
+ -- forward : 0.84
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -2.41
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', None))
+ -- forward : -6.43
+ -- left : -11.17
+ -- right : -20.01
+ -- None : 1.86
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', None))
+ -- forward : -22.00
+ -- left : -2.02
+ -- right : -1.00
+ -- None : 0.12
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', None))
+ -- forward : 0.73
+ -- left : -20.03
+ -- right : 0.27
+ -- None : -1.14
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'left'))
+ -- forward : 0.18
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.29
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'forward'))
+ -- forward : -3.47
+ -- left : -6.32
+ -- right : 0.00
+ -- None : 0.52
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', None))
+ -- forward : 0.00
+ -- left : -16.69
+ -- right : -1.04
+ -- None : 1.68
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'left'), ('right', 'left'))
+ -- forward : -3.14
+ -- left : 0.00
+ -- right : 1.33
+ -- None : 0.53
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.73
+ -- left : 0.07
+ -- right : 0.18
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.17
+ -- None : 1.77
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'forward'))
+ -- forward : 0.49
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -5.79
+ -- right : -1.92
+ -- None : 0.37
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'forward'))
+ -- forward : 0.25
+ -- left : 0.00
+ -- right : 0.88
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'forward'))
+ -- forward : -0.02
+ -- left : 0.10
+ -- right : 0.00
+ -- None : -0.26
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'left'))
+ -- forward : -9.55
+ -- left : -9.42
+ -- right : 0.13
+ -- None : 2.15
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -3.23
+ -- right : 0.34
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.17
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'left'))
+ -- forward : 0.13
+ -- left : -8.87
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', None))
+ -- forward : 1.47
+ -- left : -11.61
+ -- right : 0.13
+ -- None : -2.37
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', None), ('right', 'forward'))
+ -- forward : -33.40
+ -- left : -20.03
+ -- right : 0.94
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', None), ('left', 'forward'), ('right', 'right'))
+ -- forward : -2.04
+ -- left : -3.36
+ -- right : -10.14
+ -- None : 0.10
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.11
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'left'))
+ -- forward : 1.76
+ -- left : 0.05
+ -- right : 0.00
+ -- None : -0.60
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'forward'), ('right', None))
+ -- forward : -11.29
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 2.15
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : -15.54
+ -- right : 0.62
+ -- None : -1.58
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'right'), ('right', None))
+ -- forward : -0.47
+ -- left : 0.00
+ -- right : 0.32
+ -- None : 2.13
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', None), ('left', 'right'), ('right', 'left'))
+ -- forward : -0.78
+ -- left : -7.65
+ -- right : 0.00
+ -- None : 1.87
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.19
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'forward'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -0.03
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', 'right'))
+ -- forward : -2.02
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'left'), ('left', None), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -8.29
+ -- right : 0.20
+ -- None : 0.39
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'left'))
+ -- forward : 0.73
+ -- left : 0.88
+ -- right : 0.52
+ -- None : -2.07
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', 'forward'))
+ -- forward : 0.74
+ -- left : 0.35
+ -- right : 1.61
+ -- None : -0.26
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', None), ('left', 'left'), ('right', 'right'))
+ -- forward : -0.59
+ -- left : -2.58
+ -- right : 0.00
+ -- None : 0.24
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.34
+ -- right : 0.00
+ -- None : -1.62
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', None))
+ -- forward : 0.00
+ -- left : 1.11
+ -- right : -0.04
+ -- None : -2.66
+
+(('next_waypoint', 'left'), ('light', 'red'), ('oncoming', 'left'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.06
+ -- None : 0.00
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', None), ('right', 'right'))
+ -- forward : 1.12
+ -- left : 0.00
+ -- right : 0.00
+ -- None : -2.14
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', None), ('left', None), ('right', None))
+ -- forward : 0.80
+ -- left : 2.23
+ -- right : 0.79
+ -- None : -5.03
+
+(('next_waypoint', 'left'), ('light', 'green'), ('oncoming', 'left'), ('left', 'left'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.05
+ -- right : 0.00
+ -- None : -0.25
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'right'), ('left', 'forward'), ('right', None))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.11
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'forward'), ('right', None))
+ -- forward : 0.38
+ -- left : 0.67
+ -- right : 0.03
+ -- None : -4.43
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'forward'), ('right', None))
+ -- forward : -20.48
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.61
+
+(('next_waypoint', 'forward'), ('light', 'red'), ('oncoming', 'forward'), ('left', 'left'), ('right', 'left'))
+ -- forward : -0.96
+ -- left : -0.50
+ -- right : 0.20
+ -- None : 0.00
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'left'), ('left', 'right'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : 0.00
+ -- right : 0.10
+ -- None : -0.23
+
+(('next_waypoint', 'forward'), ('light', 'green'), ('oncoming', 'forward'), ('left', 'forward'), ('right', 'forward'))
+ -- forward : 0.85
+ -- left : 0.00
+ -- right : 0.00
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'green'), ('oncoming', None), ('left', 'forward'), ('right', 'right'))
+ -- forward : 0.00
+ -- left : -0.16
+ -- right : 0.28
+ -- None : 0.00
+
+(('next_waypoint', 'right'), ('light', 'red'), ('oncoming', 'forward'), ('left', None), ('right', 'left'))
+ -- forward : -2.53
+ -- left : 0.00
+ -- right : 0.13
+ -- None : 0.21
+
